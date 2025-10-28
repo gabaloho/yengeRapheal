@@ -1,0 +1,12 @@
+/* Custom overrides for Bootstrap */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
+.hero { background: linear-gradient(135deg, #007bff, #0056b3); min-height: 60vh; display: flex; align-items: center; }
+.navbar-brand { font-size: 1.5rem; }
+.card { transition: transform 0.2s; }
+.card:hover { transform: translateY(-5px); }
+footer a { color: #fff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+/* Responsive tweaks */
+@media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
+/* Accessibility: High contrast */
+.btn-primary { border: 2px solid #fff; } /* Ensure visibility */
