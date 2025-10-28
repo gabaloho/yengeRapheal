@@ -1,19 +1,628 @@
-/* Custom overrides for Bootstrap */
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
-.hero { background: linear-gradient(135deg, #007bff, #0056b3); min-height: 60vh; display: flex; align-items: center; }
-.navbar-brand { font-size: 1.5rem; }
-.card { transition: transform 0.2s; }
-.card:hover { transform: translateY(-5px); }
-footer a { color: #fff; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
+/* APC Official Color Scheme Variables */
+:root {
+    --sky-blue: #61C5E8;
+    --raw-umber: #976735;
+    --rojo: #E81C2B;
+    --aero: #5CC2E6;
+    --coyote: #8B5A2A;
+
+    /* Primary brand colors for website */
+    --primary-color: var(--sky-blue);
+    --secondary-color: var(--raw-umber);
+    --accent-color: var(--rojo);
+    --light-blue: var(--aero);
+    --dark-brown: var(--coyote);
+}
+
+/* Custom overrides for Bootstrap with APC Colors */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    /* APC Branding Background - Left Green, Center White, Right Blue */
+    background: linear-gradient(90deg,
+            #39a453 0%,
+            #39a453 20%,
+            #ffffff 20%,
+            #ffffff 80%,
+            #5cc3e7 80%,
+            #5cc3e7 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Hero section with APC hat and scarf background */
+.hero {
+    background: url('img/apc-hat-scarf.jpg') center/cover no-repeat !important;
+    background-color: var(--sky-blue);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 3px solid #e81d2c;
+    /* APC Red - matches footer */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(57, 164, 83, 0.1);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Navbar with APC green for strong accessibility and branding */
+.navbar-dark.bg-primary {
+    background: #39a453 !important;
+    /* APC Green - strong contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* White text on green background - excellent contrast ratio */
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff !important;
+    /* White text for maximum readability */
+    font-weight: 600;
+}
+
+/* Hover state with subtle white background */
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #39a453 !important;
+    /* Green text */
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    /* White background */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Brand styling */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 8px 16px !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #39a453 !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 5px;
+}
+
+/* Card styling with APC theme - Enhanced readability */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    /* Ensure white background for text readability */
+    color: #333333;
+    /* Dark text for better contrast */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    color: #333333;
+    /* Ensure dark text in card bodies */
+}
+
+.card-title {
+    color: #222222;
+    /* Darker color for titles */
+    font-weight: 600;
+}
+
+.card-text {
+    color: #444444;
+    /* Good contrast for body text */
+    line-height: 1.6;
+}
+
+/* Card headers with APC colors */
+.card-header.bg-primary {
+    background: linear-gradient(90deg, var(--sky-blue), var(--aero)) !important;
+    border: none;
+}
+
+.card-header.bg-success {
+    background: linear-gradient(90deg, var(--raw-umber), var(--coyote)) !important;
+    border: none;
+}
+
+.card-header.bg-danger {
+    background: var(--rojo) !important;
+    border: none;
+}
+
+.card-header.bg-info {
+    background: linear-gradient(90deg, var(--aero), var(--sky-blue)) !important;
+    border: none;
+}
+
+.card-header.bg-warning {
+    background: linear-gradient(90deg, var(--raw-umber), var(--coyote)) !important;
+    color: white !important;
+    border: none;
+}
+
+.card-header.bg-secondary {
+    background: linear-gradient(90deg, var(--coyote), var(--raw-umber)) !important;
+    border: none;
+}
+
+/* Button styling - Enhanced accessibility */
+.btn-primary {
+    background: linear-gradient(45deg, var(--sky-blue), var(--aero));
+    border: 2px solid var(--aero);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    /* Minimum touch target size */
+    padding: 10px 20px;
+    /* Adequate padding for touch targets */
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Better text visibility */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--aero), var(--sky-blue));
+    border-color: var(--sky-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(97, 197, 232, 0.4);
+    color: white;
+    /* Ensure white text on hover */
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--sky-blue);
+    color: #0066cc;
+    /* Darker blue for better contrast */
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.btn-outline-primary:hover {
+    background: var(--sky-blue);
+    border-color: var(--sky-blue);
+    color: white;
+}
+
+/* Button focus states for keyboard navigation */
+.btn:focus {
+    outline: 3px solid #ffdd44;
+    outline-offset: 2px;
+}
+
+.btn-lg {
+    font-size: 18px;
+    padding: 12px 24px;
+}
+
+/* Alert styling with APC colors - Improved readability */
+.alert-success {
+    background: rgba(255, 255, 255, 0.95);
+    /* White background for readability */
+    border-left: 4px solid var(--sky-blue);
+    border: 1px solid var(--sky-blue);
+    color: #2c3e50;
+    /* Dark text for excellent contrast */
+    font-weight: 500;
+}
+
+.alert-info {
+    background: rgba(255, 255, 255, 0.95);
+    /* White background for readability */
+    border-left: 4px solid var(--aero);
+    border: 1px solid var(--aero);
+    color: #2c3e50;
+    /* Dark text for excellent contrast */
+    font-weight: 500;
+}
+
+.alert-primary {
+    background: rgba(255, 255, 255, 0.95);
+    /* White background for readability */
+    border-left: 4px solid var(--raw-umber);
+    border: 1px solid var(--raw-umber);
+    color: #2c3e50;
+    /* Dark text for excellent contrast */
+    font-weight: 500;
+}
+
+.alert-heading {
+    color: #1a252f !important;
+    /* Very dark for headings */
+    font-weight: 600;
+}
+
+/* Footer styling */
+footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--sky-blue);
+    text-decoration: underline;
+}
+
+footer.bg-dark {
+    background: #e81d2c !important;
+}
+
+/* Text colors - Enhanced accessibility */
+.text-primary {
+    color: #0066cc !important;
+    /* Darker blue for better contrast */
+}
+
+.text-muted {
+    color: #666666 !important;
+    /* Improved contrast while keeping muted appearance */
+    opacity: 1;
+    /* Remove opacity to improve readability */
+}
+
+.text-secondary {
+    color: #6c757d !important;
+    /* Standard Bootstrap secondary for good contrast */
+}
+
+/* Ensure good contrast on light backgrounds */
+.bg-light,
+.bg-light * {
+    color: #333333 !important;
+}
+
+.bg-light .text-muted {
+    color: #666666 !important;
+}
+
+/* Main content text improvements */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    /* Default dark text */
+    font-size: 16px;
+    /* Minimum recommended font size */
+    font-weight: 400;
+    /* ...existing background styles... */
+    background: linear-gradient(90deg,
+            #39a453 0%,
+            #39a453 20%,
+            #ffffff 20%,
+            #ffffff 80%,
+            #5cc3e7 80%,
+            #5cc3e7 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Ensure headings have good contrast */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #222222;
+    font-weight: 600;
+}
+
+/* Hero text in APC red for strong political branding */
+.hero h1,
+.hero h2,
+.hero h3,
+.hero .display-4,
+.hero .display-5,
+.hero .display-6 {
+    color: #e81d2c !important;
+    /* APC Red - matches footer */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Strong shadow for readability */
+    font-weight: 700;
+}
+
+.hero .lead,
+.hero p {
+    color: #5cc3e7 !important;
+    /* APC Blue - matches background right section */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+}
+
+.display-4,
+.display-5,
+.display-6 {
+    color: #ffffff;
+    /* White for hero headings on dark backgrounds */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow for readability */
+}
+
+/* Lead text improvements */
+.lead {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Ensure white text is readable on dark backgrounds */
+.text-white {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Featured content styling */
+.border-primary {
+    border-color: var(--sky-blue) !important;
+    border-width: 2px !important;
+}
+
 /* Responsive tweaks */
-@media (max-width: 768px) { .hero h1 { font-size: 2rem; } }
-/* Accessibility: High contrast */
-.btn-primary { border: 2px solid #fff; } /* Ensure visibility */
-/* Previous styles */
-.timeline-container { position: relative; max-width: 800px; margin: 0 auto; }
-.timeline-item { position: relative; padding-left: 40px; margin-bottom: 20px; }
-.timeline-item::before { content: ''; position: absolute; left: 20px; top: 0; bottom: -20px; width: 2px; background: #007bff; }
-.timeline-item:last-child::before { bottom: 0; }
-.timeline-dot { position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: #007bff; }
-#timeline, #full-timeline, #achievements-timeline { /* JS appends here */ }
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        min-height: 50vh;
+    }
+}
+
+/* Timeline styling with APC colors */
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: -20px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--sky-blue), var(--aero));
+}
+
+.timeline-item:last-child::before {
+    bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 13px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--sky-blue), var(--aero));
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Statistics boxes styling */
+.border.rounded {
+    border: 2px solid var(--aero) !important;
+    transition: all 0.3s ease;
+}
+
+.border.rounded:hover {
+    border-color: var(--sky-blue) !important;
+    background: rgba(97, 197, 232, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Background sections - Improved text readability */
+.bg-light {
+    background: rgba(255, 255, 255, 0.95) !important;
+    /* Nearly opaque white for readability */
+    color: #333333 !important;
+}
+
+.bg-light * {
+    color: #333333;
+}
+
+.bg-light .text-muted {
+    color: #666666 !important;
+}
+
+.bg-light h1,
+.bg-light h2,
+.bg-light h3,
+.bg-light h4,
+.bg-light h5,
+.bg-light h6 {
+    color: #222222 !important;
+}
+
+/* Ensure content sections have good contrast */
+section {
+    background: rgba(255, 255, 255, 0.9);
+    margin: 10px 0;
+    border-radius: 8px;
+    padding: 20px 0;
+}
+
+/* Container improvements for readability */
+.container {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 5px;
+}
+
+/* Timeline text improvements */
+.timeline-item h5 {
+    color: #222222;
+    font-weight: 600;
+}
+
+.timeline-item p {
+    color: #444444;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Accessibility: High contrast maintained */
+.btn-primary {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Timeline containers - populated by JavaScript */
+
+/* Additional Accessibility Improvements */
+
+/* Link improvements */
+a {
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 3px solid #ffdd44;
+    outline-offset: 2px;
+    background: rgba(255, 221, 68, 0.2);
+}
+
+/* Ensure proper contrast for small text */
+small,
+.small {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 500;
+}
+
+/* Card link improvements */
+.card a {
+    color: #0066cc;
+    font-weight: 600;
+}
+
+.card a:hover {
+    color: #004499;
+}
+
+/* Form improvements */
+.form-control {
+    font-size: 16px;
+    /* Prevent zoom on mobile */
+    border: 2px solid #cccccc;
+    color: #333333;
+}
+
+.form-control:focus {
+    border-color: var(--sky-blue);
+    box-shadow: 0 0 0 3px rgba(97, 197, 232, 0.3);
+    outline: none;
+}
+
+.form-label {
+    color: #333333;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Responsive font scaling */
+@media (max-width: 576px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        min-height: 44px;
+        /* Touch target size */
+        min-width: 44px;
+    }
+
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid #000000;
+    }
+
+    .btn-primary {
+        border: 3px solid #000000;
+    }
+
+    a {
+        text-decoration: underline !important;
+        font-weight: 700;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
