@@ -1,6 +1,6 @@
-# yengeRapheal — Hon. Yenge Raphael (Static Site)
+# yengeRapheal — Hon. Yenge Raphael Aondoaseer (Static Site)
 
-A small static website for Hon. Yenge Raphael (Executive Chairman, Tarka LGA). Built with Bootstrap and a tiny custom stylesheet + script. Intended for quick local preview and lightweight deployment (GitHub Pages, static host).
+A small static website for Hon. Yenge Raphael Aondoaseer (Executive Chairman, Tarka LGA). Built with Bootstrap and a tiny custom stylesheet + script. Intended for quick local preview and lightweight deployment (GitHub Pages, static host).
 
 ## Quick overview
 - Home: [index.html](index.html)
